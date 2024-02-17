@@ -1,0 +1,32 @@
+name: actual-server
+services:
+  app:
+    image: actualbudget/actual-server:24.2.0
+    volumes:
+      - /DATA/AppData/$AppID:/data
+    ports:
+      - "5006:5006"
+    restart: unless-stopped
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+  author: Wallace
+  category: WCasaOS
+  developer: Matiss Janis Aboltins
+  description:
+    en_us: Actual Budget is a super fast and privacy-focused app for managing your finances. At its heart is the well proven and much loved Envelope Budgeting methodology. You own your data and can do whatever you want with it. Featuring multi-device sync, optional end-to-end encryption and so much more.
+    pt_br: Actual Budget é um aplicativo super rápido e focado na privacidade para gerenciar suas finanças. Em sua essência está a comprovada e muito apreciada metodologia de Orçamento de Envelope. Você possui seus dados e pode fazer o que quiser com eles. Apresentando sincronização de vários dispositivos, criptografia ponta a ponta opcional e muito mais.
+  tagline:
+    en_us: Local-first OpenSource Budget tool
+    pt_br: Ferramenta de orçamento OpenSource local
+  icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/actual.png
+  screenshot_link:
+    - https://actualbudget.org/img/homepage/actual-main-budget.png
+    - https://actualbudget.org/img/homepage/actual-main-transaction.png
+    - https://actualbudget.org/img/homepage/actual-report-cash-flow.png
+  thumbnail: "" 
+  title:
+    en_us: Actual Budget
+    pt_br: Actual Budget
+  port_map: "5006"
