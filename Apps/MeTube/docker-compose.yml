@@ -1,0 +1,41 @@
+name: metube
+services:
+  app:
+    image: ghcr.io/alexta69/metube:2024-01-26
+    volumes:
+      - /DATA/Downloads:/downloads
+    ports:
+      - "8081:8081"
+    restart: unless-stopped
+    x-casaos:
+      volumes:
+        - container: /downloads
+          description:
+            en_us: "Container Path: /downloads"
+      ports:
+        - container: "8081"
+          description:
+            en_us: "Container Port: 8081"
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+  main: app
+  author: Wallace
+  category: WCasaOS
+  developer: alexta69
+  description:
+    en_us: Download videos from YouTube (and dozens of other sites) directly
+    pt_br: Download videos from YouTube (and dozens of other sites) directly
+  tagline:
+    en_us: Download videos from YouTube
+    pt_br: Download videos from YouTube
+  icon: https://getumbrel.github.io/umbrel-apps-gallery/metube/icon.svg
+  screenshot_link:
+    - https://apps.umbrel.com/_next/image?url=https%3A%2F%2Fgetumbrel.github.io%2Fumbrel-apps-gallery%2Fmetube%2F1.jpg&w=1920&q=7
+    - https://apps.umbrel.com/_next/image?url=https%3A%2F%2Fgetumbrel.github.io%2Fumbrel-apps-gallery%2Fmetube%2F2.jpg&w=1920&q=75
+    - https://apps.umbrel.com/_next/image?url=https%3A%2F%2Fgetumbrel.github.io%2Fumbrel-apps-gallery%2Fmetube%2F3.jpg&w=1920&q=75
+  title:
+    en_us: MeTube
+    pt_br: MeTube
+  port_map: "8081"
