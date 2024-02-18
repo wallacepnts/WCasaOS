@@ -11,8 +11,12 @@ services:
     x-casaos:
       volumes:
         - container: /data
+          description:
+            en_us: "Container Path: /data"
       ports:
         - container: "5006"
+          description:
+            en_us: "Container Port: 5006"
 x-casaos:
   architectures:
     - amd64
