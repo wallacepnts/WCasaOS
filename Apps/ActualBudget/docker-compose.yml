@@ -1,30 +1,53 @@
 name: actual-server
 services:
-  app:
+  actual-server:
+    environment:
+      PGID: $PGID
+      PUID: $PUID
+      TZ: $TZ
     image: actualbudget/actual-server:24.2.0
-    container_name: actual-server
-    volumes:
-      - /DATA/AppData/$AppID:/data
+    deploy:
+      resources:
+        reservations:
+          memory: "256M"
+    network_mode: bridge
     ports:
       - "5006:5006"
     restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /DATA/AppData/$AppID
+        target: /data
     x-casaos:
+      envs:
+        - container: TZ
+          description:
+            en_us: TimeZone
+        - container: PUID
+          description:
+            en_us: Run Syncthing as specified uid.
+        - container: PGID
+          description:
+            en_us: Run Syncthing as specified gid.
+      ports:
+        - container: "5006"
+          description:
+            en_us: WebUI HTTP Port
+
       volumes:
         - container: /data
           description:
             en_us: "Container Path: /data"
-      ports:
-        - container: "5006"
-          description:
-            en_us: "Container Port: 5006"
+    container_name: actual-server
 x-casaos:
   architectures:
     - amd64
     - arm64
-  main: app 
+  main: actual-server
   author: Wallace
   category: WCasaOS
   developer: Matiss Janis Aboltins
+  project_url: https://actualbudget.org/
   description:
     en_us: Actual Budget is a super fast and privacy-focused app for managing your finances. At its heart is the well proven and much loved Envelope Budgeting methodology. You own your data and can do whatever you want with it. Featuring multi-device sync, optional end-to-end encryption and so much more.
     pt_br: Actual Budget é um aplicativo super rápido e focado na privacidade para gerenciar suas finanças. Em sua essência está a comprovada e muito apreciada metodologia de Orçamento de Envelope. Você possui seus dados e pode fazer o que quiser com eles. Apresentando sincronização de vários dispositivos, criptografia ponta a ponta opcional e muito mais.
@@ -36,8 +59,9 @@ x-casaos:
     - https://actualbudget.org/img/homepage/actual-main-budget.png
     - https://actualbudget.org/img/homepage/actual-main-transaction.png
     - https://actualbudget.org/img/homepage/actual-report-cash-flow.png
-  thumbnail: "" 
+  tips: {}
   title:
     en_us: Actual Budget
     pt_br: Actual Budget
+  index: /
   port_map: "5006"
