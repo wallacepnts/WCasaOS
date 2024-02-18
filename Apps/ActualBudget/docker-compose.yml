@@ -8,8 +8,8 @@ services:
     image: actualbudget/actual-server:24.2.0
     deploy:
       resources:
-        reservations:
-          memory: "256M"
+        limits:
+          memory: 512M
     network_mode: bridge
     ports:
       - "5006:5006"
