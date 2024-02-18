@@ -2,8 +2,6 @@ name: actual-server
 services:
   app:
     image: actualbudget/actual-server:24.2.0
-    networks:
-      - wcasaos
     container_name: actual-server
     volumes:
       - /DATA/AppData/$AppID:/data
@@ -13,12 +11,8 @@ services:
     x-casaos:
       volumes:
         - container: /data
-          description:
-            en_us: "Container Path: /data"
       ports:
         - container: "5006"
-          description:
-            en_us: "Container Port: 5006"
 x-casaos:
   architectures:
     - amd64
