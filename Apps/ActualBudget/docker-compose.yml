@@ -5,7 +5,7 @@ services:
       PGID: $PGID
       PUID: $PUID
       TZ: $TZ
-    image: actualbudget/actual-server:24.2.0
+    image: actualbudget/actual-server:24.3.0
     deploy:
       resources:
         limits:
