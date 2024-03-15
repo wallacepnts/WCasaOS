@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/IceWhaleTech/logo/main/casaos/casaos_banner_dark_night_800x300.png" />
-</p>
+![CasaOS](https://raw.githubusercontent.com/IceWhaleTech/logo/main/casaos/casaos_banner_dark_night_800x300.png)
 
 Atualizar
 ~~~
@@ -25,5 +23,5 @@ https://github.com/wallacepnts/WCasaOS/archive/refs/heads/main.zip
 ## Aplicativos
 
 | Logo | Aplicativo  | Versão | Descrição |
-| --- | --- | --- | --- |
-| <p align="center"><img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/actual.png" width="64" /></p> | Actual Budget | 0.6.6 | Actual Budget é um aplicativo super rápido e focado na privacidade para gerenciar suas finanças. Em sua essência está a comprovada e muito apreciada metodologia de Orçamento de Envelope. |
+| :------: | :------: | :------: | :------: |
+| ![Actual Budget](https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/actual.png) | [Actual Budget](https://github.com/actualbudget/actual) | 24.3.0 | Actual Budget é um aplicativo super rápido e focado na privacidade para gerenciar suas finanças. Em sua essência está a comprovada e muito apreciada metodologia de Orçamento de Envelope. |
