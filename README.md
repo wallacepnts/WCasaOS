@@ -3,22 +3,22 @@
 CasaOS é um projeto de código aberto baseado na comunidade que foi concebido com o objetivo de democratizar os dados e devolver o controle dos serviços para as mãos do usuário. Ele visa redefinir a experiência digital na nuvem privada para criadores e desenvolvedores, permitindo a todos levar esse objetivo a uma nova escala.
 
 ## Atualizar
-~~~
+~~~bash
 sudo apt update && sudo apt upgrade
 ~~~
 
 ## Instalar curl
-~~~
+~~~bash
 sudo apt install curl
 ~~~
 
 ## Instalar o Casa OS
-~~~
+~~~bash
 curl -fsSL https://get.casaos.io | sudo bash
 ~~~
 
 ## Adicionar a fonte na loja de aplicativos
-~~~
+~~~bash
 https://github.com/wallacepnts/WCasaOS/archive/refs/heads/main.zip
 ~~~
 
