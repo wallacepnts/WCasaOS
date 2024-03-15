@@ -1,21 +1,23 @@
 ![CasaOS](https://raw.githubusercontent.com/IceWhaleTech/logo/main/casaos/casaos_banner_dark_night_800x300.png)
 
-Atualizar
+CasaOS é um projeto de código aberto baseado na comunidade que foi concebido com o objetivo de democratizar os dados e devolver o controle dos serviços para as mãos do usuário. Ele visa redefinir a experiência digital na nuvem privada para criadores e desenvolvedores, permitindo a todos levar esse objetivo a uma nova escala.
+
+## Atualizar
 ~~~
 sudo apt update && sudo apt upgrade
 ~~~
 
-Instalar curl
+## Instalar curl
 ~~~
 sudo apt install curl
 ~~~
 
-Instalar o Casa OS
+## Instalar o Casa OS
 ~~~
 curl -fsSL https://get.casaos.io | sudo bash
 ~~~
 
-Adicionar a fonte na loja de aplicativos
+## Adicionar a fonte na loja de aplicativos
 ~~~
 https://github.com/wallacepnts/WCasaOS/archive/refs/heads/main.zip
 ~~~
