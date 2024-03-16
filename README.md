@@ -27,3 +27,4 @@ https://github.com/wallacepnts/WCasaOS/archive/refs/heads/main.zip
 | Logo | Aplicativo  | Versão | Descrição |
 | :------: | :------: | :------: | :------: |
 | ![Actual Budget](https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/actual.png) | [Actual Budget](https://github.com/actualbudget/actual) | 24.3.0 | Actual Budget é um aplicativo super rápido e focado na privacidade para gerenciar suas finanças. Em sua essência está a comprovada e muito apreciada metodologia de Orçamento de Envelope. |
+| ![Appsmith](https://raw.githubusercontent.com/appsmithorg/appsmith/release/static/logo.png) | [Appsmith](https://github.com/actualbudget/actual) | 24.3.0 | Actual Budget é um aplicativo super rápido e focado na privacidade para gerenciar suas finanças. Em sua essência está a comprovada e muito apreciada metodologia de Orçamento de Envelope. |
