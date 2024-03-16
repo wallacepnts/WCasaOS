@@ -1,0 +1,41 @@
+name: appsmith
+services:
+  app:
+    image: appsmith/appsmith-ce:v1.9.13
+    container_name: appsmith
+    ports:
+      - "1080:80"
+      - "10443:443"
+    volumes:
+      - /DATA/AppData/$AppID/stacks:/appsmith-stacks
+    restart: unless-stopped
+    x-casaos:on
+      volumes:
+        - container: /appsmith-stacks
+          description:
+            en_us: "Container Path: /appsmith-stacks"
+      ports:
+        - container: "1080"
+          description:
+            en_us: "Container Port: 1080"
+        - container: "10443"
+          description:
+            en_us: "Container Port: 10443"
+
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+  main: app
+  description:
+    en_us: Low code project to build admin panels, internal tools, and dashboards, integrating 15+ databases.
+  tagline:
+    en_us: Appsmith
+  developer: "appsmithorg"
+  author: Wallace
+  icon: https://raw.githubusercontent.com/appsmithorg/appsmith/release/static/logo.png
+  thumbnail: ""
+  title:
+    en_us: Appsmith
+  category: WCasaOS
+  port_map: "1080"
