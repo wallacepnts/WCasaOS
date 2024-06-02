@@ -1,8 +1,0 @@
-{
-	"version": "1.105.1",
-	"title": "Immich",
-	"name": "immich",
-},
-	"container": {
-	"image": "ghcr.io/immich-app/immich-server:latest"
-}
