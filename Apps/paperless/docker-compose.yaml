@@ -57,6 +57,9 @@ services:
             en_us: ""
     container_name: paperless
 x-casaos:
+  architectures:
+    - amd64
+    - arm64
   main: paperless-ngx
   author: Wallace
   category: WCasaOS
