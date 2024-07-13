@@ -1,0 +1,46 @@
+name: paperless
+services:
+  paperless-ngx:
+    cpu_shares: 90
+    command: []
+    container_name: paperless-ngx
+    deploy:
+      resources:
+        limits:
+          memory: 3880M
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Sao_Paulo
+    hostname: paperless-ngx
+    image: linuxserver/paperless-ngx:1.8.0
+    labels:
+      icon: https://icon.casaos.io/main/all/paperless.png
+    ports:
+      - target: 8000
+        published: "8000"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /DATA/AppData/paperless/config
+        target: /config
+      - type: bind
+        source: /DATA/AppData/paperless/data
+        target: /data
+    devices: []
+    cap_add: []
+    network_mode: bridge
+    privileged: false
+x-casaos:
+  author: self
+  category: self
+  hostname: ""
+  icon: https://icon.casaos.io/main/all/paperless.png
+  index: /
+  is_uncontrolled: false
+  port_map: "8000"
+  scheme: http
+  store_app_id: paperless
+  title:
+    custom: Paperless
