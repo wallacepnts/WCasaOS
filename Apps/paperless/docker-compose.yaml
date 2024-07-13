@@ -33,8 +33,9 @@ services:
     network_mode: bridge
     privileged: false
 x-casaos:
-  author: self
-  category: self
+  main: paperless-ngx
+  author: Wallace
+  category: WCasaOS
   hostname: ""
   icon: https://icon.casaos.io/main/all/paperless.png
   index: /
