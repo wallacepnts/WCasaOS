@@ -32,6 +32,30 @@ services:
     cap_add: []
     network_mode: bridge
     privileged: false
+    x-casaos:
+      envs:
+        - container: PUID
+          description:
+            en_us: ""
+        - container: PGID
+          description:
+            en_us: ""
+        - container: TZ
+          description:
+            en_us: ""
+      ports:
+        - container: "8000"
+          description:
+            en_us: ""
+
+      volumes:
+        - container: /config
+          description:
+            en_us: ""
+        - container: /data
+          description:
+            en_us: ""
+    container_name: paperless
 x-casaos:
   main: paperless-ngx
   author: Wallace
