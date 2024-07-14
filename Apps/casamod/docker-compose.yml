@@ -3,7 +3,7 @@ services:
   casamod:
     #build: .
     container_name: casamod
-    image: cp0204/casamod:0.0.3
+    image: cp0204/casamod:v0.0.3
     volumes:
       - /DATA/AppData/$AppID:/DATA/AppData/casamod
       - /var/lib/casaos/www:/var/lib/casaos/www
