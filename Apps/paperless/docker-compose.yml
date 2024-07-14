@@ -1,0 +1,58 @@
+name: paperless-ngx
+services:
+  paperless-ngx:
+    image: linuxserver/paperless-ngx:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Sao_Paulo
+    volumes:
+      - /DATA/AppData/$AppID:/config
+      - /DATA/AppData/$AppID:/data
+    ports:
+      - 8000:8000
+    restart: unless-stopped
+    x-casaos:
+      envs:
+        - container: PUID
+          description:
+            en_us: ""
+        - container: PGID
+          description:
+            en_us: ""
+        - container: TZ
+          description:
+            en_us: ""
+      ports:
+        - container: "8000"
+          description:
+            en_us: ""
+
+      volumes:
+        - container: /config
+          description:
+            en_us: ""
+        - container: /data
+          description:
+            en_us: ""
+    container_name: paperless-ngx
+x-casaos:
+    architectures:
+        - amd64
+        - arm
+        - arm64
+    main: paperless-ngx
+    author: Wallace
+    category: Backup
+    description:
+        en_us: Syncthing is a continuous file synchronization program. It synchronizes files between two or more computers in real time, safely protected from prying eyes. Your data is your data alone and you deserve to choose where it is stored, whether it is shared with some third party, and how it's transmitted over the internet.
+    developer: Syncthing
+    icon: https://icon.casaos.io/main/all/paperless.png
+    title:
+        en_us: Paperless
+    tips:
+        before_install:
+            en_us: |
+                (some notes for user to read prior to installation, such as preset `username` and `password` - markdown is supported!)
+    index: /
+    port_map: "8000"
