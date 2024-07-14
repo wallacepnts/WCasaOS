@@ -1,18 +1,28 @@
-name: paperless
+name: paperless-ngx
 services:
-  duplicati:
+  paperless-ngx:
     environment:
-      PGID: $PGID
-      PUID: $PUID
+      PGID: "1000"
+      PUID: "1000"
       TZ: America/Sao_Paulo
     image: linuxserver/paperless-ngx:1.8.0
+    deploy:
+      resources:
+        reservations:
+          memory: 64M
     network_mode: bridge
     ports:
-      - 8000:8000
+      - target: 8000
+        published: "8000"
+        protocol: tcp
     restart: unless-stopped
     volumes:
-      - /DATA/AppData/$AppID/config:/config
-      - /DATA/AppData/$AppID/data:/data
+      - type: bind
+        source: /DATA/AppData/$AppID/config
+        target: /config
+      - type: bind
+        source: /DATA/AppData/$AppID/data
+        target: /data
     x-casaos:
       envs:
         - container: PUID
@@ -28,6 +38,7 @@ services:
         - container: "8000"
           description:
             en_us: ""
+
       volumes:
         - container: /config
           description:
@@ -44,12 +55,14 @@ x-casaos:
   author: Wallace
   category: Backup
   description:
-    en_us: Duplicati is a free, open source, backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers.
-    pt_br: O Duplicati é um cliente de backup gratuito e de código aberto que armazena de forma segura backups criptografados, incrementais e compactados em serviços de armazenamento em nuvem e servidores de arquivos remotos.
-  developer: duplicati
+    en_us: paperless-ngx is a free, open source, backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers.
+    pt_br: O paperless-ngx é um cliente de backup gratuito e de código aberto que armazena de forma segura backups criptografados, incrementais e compactados em serviços de armazenamento em nuvem e servidores de arquivos remotos.
+  developer: paperless-ngx
   icon: https://icon.casaos.io/main/all/paperless.png
+  thumbnail: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/paperless-ngx/thumbnail.png
+  tips: {}
   title:
-    en_us: Paperless
-    pt_br: Paperless
+    en_us: paperless-ngx
+    pt_br: paperless-ngx
   index: /
   port_map: "8000"
