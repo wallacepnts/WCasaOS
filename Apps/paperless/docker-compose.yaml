@@ -2,6 +2,8 @@ name: paperless
 services:
   duplicati:
     environment:
+      PGID: $PGID
+      PUID: $PUID
       TZ: America/Sao_Paulo
     image: linuxserver/paperless-ngx:1.8.0
     network_mode: bridge
@@ -13,6 +15,12 @@ services:
       - /DATA/AppData/$AppID/data:/data
     x-casaos:
       envs:
+        - container: PUID
+          description:
+            en_us: ""
+        - container: PGID
+          description:
+            en_us: ""
         - container: TZ
           description:
             en_us: ""
@@ -20,7 +28,6 @@ services:
         - container: "8000"
           description:
             en_us: ""
-
       volumes:
         - container: /config
           description:
@@ -40,7 +47,7 @@ x-casaos:
     en_us: Duplicati is a free, open source, backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers.
     pt_br: O Duplicati é um cliente de backup gratuito e de código aberto que armazena de forma segura backups criptografados, incrementais e compactados em serviços de armazenamento em nuvem e servidores de arquivos remotos.
   developer: duplicati
-  icon: https://icon.casaos.io/main/all/duplicati.png
+  icon: https://icon.casaos.io/main/all/paperless.png
   title:
     en_us: Paperless
     pt_br: Paperless
