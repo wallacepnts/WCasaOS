@@ -59,7 +59,7 @@ x-casaos:
     - arm64
   main: duplicati
   author: Wallace
-  category: WCasaOS
+  category: Backup
   description:
     en_us: Duplicati is a free, open source, backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers.
     pt_br: O Duplicati é um cliente de backup gratuito e de código aberto que armazena de forma segura backups criptografados, incrementais e compactados em serviços de armazenamento em nuvem e servidores de arquivos remotos.
