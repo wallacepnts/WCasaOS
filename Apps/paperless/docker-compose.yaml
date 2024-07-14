@@ -2,7 +2,6 @@ name: paperless
 services:
   paperless-ngx:
     cpu_shares: 90
-    command: []
     container_name: paperless-ngx
     deploy:
       resources:
@@ -23,13 +22,11 @@ services:
     restart: unless-stopped
     volumes:
       - type: bind
-        source: /DATA/AppData/paperless/config
+        source: /DATA/AppData/$AppID/config
         target: /config
       - type: bind
-        source: /DATA/AppData/paperless/data
+        source: /DATA/AppData/$AppID/data
         target: /data
-    devices: []
-    cap_add: []
     network_mode: bridge
     privileged: false
     x-casaos:
@@ -55,7 +52,7 @@ services:
         - container: /data
           description:
             en_us: ""
-    container_name: paperless
+    container_name: paperless-ngx
 x-casaos:
   architectures:
     - amd64
@@ -63,12 +60,10 @@ x-casaos:
   main: paperless-ngx
   author: Wallace
   category: WCasaOS
-  hostname: ""
   icon: https://icon.casaos.io/main/all/paperless.png
+  title:
+    en_us: Paperless
+    pt_br: Paperless
   index: /
-  is_uncontrolled: false
   port_map: "8000"
   scheme: http
-  store_app_id: paperless
-  title:
-    custom: Paperless
