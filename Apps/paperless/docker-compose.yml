@@ -3,14 +3,13 @@ services:
   broker:
     container_name: broker
     image: docker.io/library/redis:7
-    network_mode: bridge
     restart: unless-stopped
     volumes:
       - /DATA/AppData/paperless:/data
+
   webserver:
     container_name: webserver
     image: ghcr.io/paperless-ngx/paperless-ngx:2.11.0
-    network_mode: bridge
     restart: unless-stopped
     depends_on:
       - broker
@@ -23,7 +22,6 @@ services:
       - /DATA/AppData/paperless/consume:/usr/src/paperless/consume
     environment:
       PAPERLESS_REDIS: redis://broker:6379
-      PAPERLESS_TIME_ZONE: America/Sao_Paulo
       PAPERLESS_ADMIN_USER: casaos
       PAPERLESS_ADMIN_PASSWORD: casaos
 x-casaos:
