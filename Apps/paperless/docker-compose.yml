@@ -1,4 +1,4 @@
-name: broker
+name: paperless-ngx
 services:
   broker:
     container_name: broker
@@ -11,12 +11,45 @@ services:
         - container: /config
           description:
             en_us: ""
+  webserver:
+    container_name: webserver
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    restart: unless-stopped
+    depends_on:
+      - broker
+    ports:
+      - "8000:8000"
+    volumes:
+      - /DATA/AppData/$AppID/data:/usr/src/paperless/data
+      - /DATA/AppData/$AppID/media:/usr/src/paperless/media
+      - /DATA/AppData/$AppID/export:/usr/src/paperless/export
+      - /DATA/AppData/$AppID/consume:/usr/src/paperless/consume
+    environment:
+      PAPERLESS_REDIS: redis://broker:6379
+    x-casaos:
+      envs:
+        - container: PAPERLESS_REDIS
+          description:
+            en_us: ""
+      volumes:
+        - container: /usr/src/paperless/data
+          description:
+            en_us: ""
+        - container: /usr/src/paperless/media
+          description:
+            en_us: ""
+        - container: /usr/src/paperless/export
+          description:
+            en_us: ""
+        - container: /usr/src/paperless/consume
+          description:
+            en_us: ""
 
 x-casaos:
   architectures:
     - amd64
     - arm64
-  main: broker
+  main: webserver
   author: Wallace
   category: backup
   description:
@@ -26,4 +59,4 @@ x-casaos:
   title:
     en_us: Papertest
   index: /
-  port_map: "8200"
+  port_map: "8000"
