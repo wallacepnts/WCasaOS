@@ -9,7 +9,7 @@ services:
       - /DATA/AppData/paperless:/data
   webserver:
     container_name: webserver
-    image: ghcr.io/paperless-ngx/paperless-ngx:l2.11.0
+    image: ghcr.io/paperless-ngx/paperless-ngx:2.11.0
     network_mode: bridge
     restart: unless-stopped
     depends_on:
