@@ -1,7 +1,7 @@
 name: paperless-ngx
 services:
   broker:
-    container_name: paperless-broker
+    container_name: broker
     image: docker.io/library/redis:7
     restart: unless-stopped
     network_mode: bridge
@@ -13,7 +13,7 @@ services:
           description:
             en_us: ""
   webserver:
-    container_name: paperless-webserver
+    container_name: webserver
     image: ghcr.io/paperless-ngx/paperless-ngx:v2.11.0
     restart: unless-stopped
     depends_on:
@@ -71,7 +71,7 @@ x-casaos:
   architectures:
     - amd64
     - arm64
-  main: paperless-webserver
+  main: webserver
   author: Wallace
   category: backup
   description:
