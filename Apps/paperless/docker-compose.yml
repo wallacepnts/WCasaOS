@@ -33,6 +33,7 @@ x-casaos:
   architectures:
     - amd64
     - arm64
+    - armhf
   main: webserver
   author: Wallace
   category: Arquivo
