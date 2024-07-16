@@ -26,9 +26,17 @@ services:
       - /DATA/AppData/$AppID/consume:/usr/src/paperless/consume
     environment:
       PAPERLESS_REDIS: redis://broker:6379
+      PAPERLESS_ADMIN_USER: admin
+      PAPERLESS_ADMIN_PASSWORD: admin
     x-casaos:
       envs:
         - container: PAPERLESS_REDIS
+          description:
+            en_us: ""
+        - container: PAPERLESS_ADMIN_USER
+          description:
+            en_us: ""
+        - container: PAPERLESS_ADMIN_PASSWORD
           description:
             en_us: ""
       volumes:
