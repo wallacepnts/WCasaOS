@@ -27,9 +27,9 @@ services:
       - /DATA/AppData/$AppID/export:/usr/src/paperless/export
       - /DATA/AppData/$AppID/consume:/usr/src/paperless/consume
     environment:
-      PGID: 1000
-      PUID: 1000
-      TZ: America/Sao_Paulo
+      PGID: $PGID
+      PUID: $PUID
+      TZ: $TZ
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_ADMIN_USER: casaos
       PAPERLESS_ADMIN_PASSWORD: casaos
@@ -71,13 +71,11 @@ x-casaos:
   architectures:
     - amd64
     - arm64
-  main: paperless-webserver
+  main: webserver
   author: Wallace
   category: backup
   description:
     en_us: Paperless is an open source document management system that indexes your scanned documents and allows you to easily search for documents and store metadata alongside your documents.
-  tagline:
-    en_us: Document management system
   developer: Daniel Quinn
   icon: https://icon.casaos.io/main/all/paperless.png
   title:
