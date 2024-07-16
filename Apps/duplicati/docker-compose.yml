@@ -2,8 +2,8 @@ name: duplicati
 services:
   duplicati:
     environment:
-      PGID: "0"
-      PUID: "0"
+      PGID: "1000"
+      PUID: "1000"
       TZ: America/Sao_Paulo
     image: linuxserver/duplicati:2.0.8
     deploy:
