@@ -1,0 +1,22 @@
+name: paperless-ngx
+services:
+  broker:
+    container_name: paperless-broker
+    image: docker.io/library/redis:7
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/paperless:/data
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+  main: paperless-broker
+  author: Wallace
+  category: Arquivo
+  description:
+    en_us: Actual Budget is a super fast and privacy-focused app for managing your finances. At its heart is the well proven and much loved Envelope Budgeting methodology. You own your data and can do whatever you want with it. Featuring multi-device sync, optional end-to-end encryption and so much more.
+  icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/actual.png
+  title:
+    en_us: Actual Budget
+  index: /
+  port_map: "5006"
