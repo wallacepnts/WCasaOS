@@ -26,8 +26,8 @@ x-casaos:
     en_us: Duplicati⁠ works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC and many others.
     pt_br: Duplicati trabalha com protocolos padrão como FTP, SSH, WebDAV, além de serviços populares como Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC e muitos outros.
   tagline:
-    en_us: Sistema para backup que funciona com vários serviços na nuvem.
-    pt_br: System for backup that works with various cloud services.
+    en_us: System for backup that works with various cloud services.
+    pt_br: Sistema para backup que funciona com vários serviços na nuvem.
   icon: https://icon.casaos.io/main/all/duplicati.png
   title:
     en_us: Duplicati
