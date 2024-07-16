@@ -2,8 +2,8 @@ name: actual-server
 services:
   actual-server:
     environment:
-      PGID: $PGID
-      PUID: $PUID
+      PGID: 1000
+      PUID: 1000
       TZ: America/Sao_Paulo
     image: actualbudget/actual-server:24.7.0
     deploy:
@@ -15,9 +15,7 @@ services:
       - "5006:5006"
     restart: unless-stopped
     volumes:
-      - type: bind
-        source: /DATA/AppData/$AppID
-        target: /data
+      - /DATA/AppData/$AppID:/data
     x-casaos:
       envs:
         - container: PUID

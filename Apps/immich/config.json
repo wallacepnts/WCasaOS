@@ -1,6 +1,0 @@
-{
-  "id": "immich",
-  "version": "1.105.1",
-  "image": "ghcr.io/immich-app/immich-server",
-  "docs_link": "",
-}
