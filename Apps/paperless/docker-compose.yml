@@ -1,6 +1,6 @@
 name: paperless-ngx
 services:
-  paperless-broker:
+  broker:
     container_name: paperless-broker
     image: docker.io/library/redis:7
     restart: unless-stopped
@@ -12,7 +12,7 @@ services:
         - container: /config
           description:
             en_us: ""
-  paperless-webserver:
+  webserver:
     container_name: paperless-webserver
     image: ghcr.io/paperless-ngx/paperless-ngx:v2.11.0
     restart: unless-stopped
