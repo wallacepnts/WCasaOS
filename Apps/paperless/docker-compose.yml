@@ -29,11 +29,6 @@ services:
       PAPERLESS_OCR_LANGUAGE: por
       PAPERLESS_ADMIN_USER: casaos
       PAPERLESS_ADMIN_PASSWORD: casaos
-volumes:
-  data:
-  media:
-  pgdata:
-  redisdata:
 x-casaos:
   architectures:
     - amd64
