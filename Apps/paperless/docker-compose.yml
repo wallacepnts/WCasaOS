@@ -31,10 +31,15 @@ x-casaos:
     - armhf
   main: webserver
   author: Wallace
-  category: Arquivo
+  category: Backup
+  developer: Daniel Quinn
   description:
-    en_us: Actual Budget is a super fast and privacy-focused app for managing your finances. At its heart is the well proven and much loved Envelope Budgeting methodology. You own your data and can do whatever you want with it. Featuring multi-device sync, optional end-to-end encryption and so much more.
-  icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/actual.png
+    en_us: Paperless-ngx⁠ is an application by Daniel Quinn and contributors that indexes your scanned documents and allows you to easily search for documents and store metadata alongside your documents.
+    pt_br: Paperless-ngx é um aplicativo desenvolvido por Daniel Quinn e colaboradores que indexa documentos digitalizados, facilitando a busca e o armazenamento de metadados junto aos documentos.
+  tagline:
+    en_us: Indexes scanned documents for easy search and metadata storage
+    pt_br: Indexa documentos digitalizados para busca e armazenamento de metadados
+  icon: https://icon.casaos.io/main/all/paperless.png
   title:
     en_us: paperless
   index: /
