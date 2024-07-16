@@ -41,6 +41,6 @@ x-casaos:
     pt_br: Indexa documentos digitalizados para busca e armazenamento de metadados
   icon: https://icon.casaos.io/main/all/paperless.png
   title:
-    en_us: paperless
+    en_us: Paperless
   index: /
   port_map: "8000"
