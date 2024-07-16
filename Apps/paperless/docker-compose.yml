@@ -27,9 +27,9 @@ services:
       - /DATA/AppData/$AppID/export:/usr/src/paperless/export
       - /DATA/AppData/$AppID/consume:/usr/src/paperless/consume
     environment:
-      PGID: $PGID
-      PUID: $PUID
-      TZ: $TZ
+      PGID: 1000
+      PUID: 1000
+      TZ: America/Sao_Paulo
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_ADMIN_USER: casaos
       PAPERLESS_ADMIN_PASSWORD: casaos
