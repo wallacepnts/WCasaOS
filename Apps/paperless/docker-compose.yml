@@ -10,7 +10,6 @@ services:
       - container: /data
         description:
           en_us: ""
-
   webserver:
     container_name: webserver
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
@@ -62,24 +61,20 @@ services:
         - container: /usr/src/paperless/consume
           description:
             en_us: ""
-
   gotenberg:
     container_name: gotenberg
     image: docker.io/gotenberg/gotenberg:8.7
     restart: unless-stopped
-
     # The gotenberg chromium route is used to convert .eml files. We do not
     # want to allow external content like tracking pixels or even javascript.
     command:
       - "gotenberg"
       - "--chromium-disable-javascript=true"
       - "--chromium-allow-list=file:///tmp/.*"
-
   tika:
     container_name: tika
     image: docker.io/apache/tika:latest
     restart: unless-stopped
-
 x-casaos:
   architectures:
     - amd64
@@ -104,3 +99,4 @@ x-casaos:
     en_us: Paperteste
   index: /
   port_map: "8000"
+  
