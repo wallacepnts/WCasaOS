@@ -13,7 +13,7 @@ services:
             en_us: ""
   webserver:
     container_name: webserver
-    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    image: ghcr.io/paperless-ngx/paperless-ngx:v2.11.0
     restart: unless-stopped
     depends_on:
       - broker
@@ -27,7 +27,7 @@ services:
     environment:
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_ADMIN_USER: admin
-      PAPERLESS_ADMIN_PASSWORD: admin
+      PAPERLESS_ADMIN_PASSWORD: casaos
     x-casaos:
       envs:
         - container: PAPERLESS_REDIS
@@ -61,10 +61,11 @@ x-casaos:
   author: Wallace
   category: backup
   description:
-    en_us: Duplicati is a free, open source, backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers.
-  developer: duplicati
-  icon: https://icon.casaos.io/main/all/duplicati.png
+    en_us: Paperless is an open source document management system that indexes your scanned documents and allows you to easily search for documents and store metadata alongside your documents.
+  developer: Daniel Quinn
+  icon: https://icon.casaos.io/main/all/paperless.png
   title:
-    en_us: Papertest
+    en_us: Paperless
   index: /
   port_map: "8000"
+  
