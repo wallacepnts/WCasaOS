@@ -6,6 +6,21 @@ services:
     restart: unless-stopped
     volumes:
       - /DATA/AppData/paperless:/data
+  webserver:
+    container_name: paperless-webserver
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    restart: unless-stopped
+    depends_on:
+      - broker
+    ports:
+      - "8000:8000"
+    volumes:
+      - /DATA/AppData/paperless/data:/usr/src/paperless/data
+      - /DATA/AppData/paperless/media:/usr/src/paperless/media
+      - /DATA/AppData/paperless/export:/usr/src/paperless/export
+      - /DATA/AppData/paperless/consume:/usr/src/paperless/consume
+    environment:
+      PAPERLESS_REDIS: redis://broker:6379
 x-casaos:
   architectures:
     - amd64
