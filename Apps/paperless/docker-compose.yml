@@ -1,16 +1,16 @@
 name: broker
 services:
   broker:
+    container_name: broker
     image: docker.io/library/redis:7
     restart: unless-stopped
     volumes:
       - /DATA/AppData/$AppID/data:/data
-  x-casaos:
-    volumes:
-      - container: /config
-        description:
-          en_us: ""
-  container_name: broker
+    x-casaos:
+      volumes:
+        - container: /config
+          description:
+            en_us: ""
 
 x-casaos:
   architectures:
