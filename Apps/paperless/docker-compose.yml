@@ -1,14 +1,16 @@
 name: paperless-ngx
 services:
   broker:
-    container_name: broker
+    container_name: paperless-broker
     image: docker.io/library/redis:7
+    network_mode: bridge
     restart: unless-stopped
     volumes:
       - /DATA/AppData/paperless:/data
   webserver:
-    container_name: webserver
+    container_name: paperless-webserver
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    network_mode: bridge
     restart: unless-stopped
     depends_on:
       - broker
@@ -21,6 +23,17 @@ services:
       - /DATA/AppData/paperless/consume:/usr/src/paperless/consume
     environment:
       PAPERLESS_REDIS: redis://broker:6379
+      USERMAP_UID: 1000
+      USERMAP_GID: 100
+      PAPERLESS_TIME_ZONE: America/Sao_Paulo
+      PAPERLESS_OCR_LANGUAGE: por
+      PAPERLESS_ADMIN_USER: casaos
+      PAPERLESS_ADMIN_PASSWORD: casaos
+volumes:
+  data:
+  media:
+  pgdata:
+  redisdata:
 x-casaos:
   architectures:
     - amd64
