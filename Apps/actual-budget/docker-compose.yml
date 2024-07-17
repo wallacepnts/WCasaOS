@@ -1,14 +1,41 @@
 name: actual-server
 services:
   actual-server:
-    container_name: actual-server
-    image: actualbudget/actual-server:24.7.0
-    ports:
-      - '5006:5006'
     environment:
-    volumes:
-      - /DATA/AppData/actual:/data
+      PGID: 1000
+      PUID: 1000
+      TZ: America/Sao_Paulo
+    image: actualbudget/actual-server:24.7.0
+    deploy:
+      resources:
+        reservations:
+          memory: "256M"
+    network_mode: bridge
+    ports:
+      - "5006:5006"
     restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID:/data
+    x-casaos:
+      envs:
+        - container: PUID
+          description:
+            en_us: ""
+        - container: PGID
+          description:
+            en_us: ""
+        - container: TZ
+          description:
+            en_us: ""
+      ports:
+        - container: "5006"
+          description:
+            en_us: ""
+      volumes:
+        - container: /data
+          description:
+            en_us: "Container Path: /data"
+    container_name: actual-server
 x-casaos:
   architectures:
     - amd64
