@@ -1,7 +1,7 @@
 name: actual-server
 services:
-  actual_server:
-    container_name: actual_server
+  actual-server:
+    container_name: actual-server
     image: actualbudget/actual-server:24.7.0
     ports:
       - '5006:5006'
