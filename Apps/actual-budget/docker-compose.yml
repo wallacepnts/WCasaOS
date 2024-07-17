@@ -14,7 +14,7 @@ x-casaos:
     - arm64
   main: actual-server
   author: Wallace
-  category: Finanças
+  category: WCasaOS
   developer: Matiss Janis Aboltins
   project_url: https://actualbudget.org/
   description:
