@@ -1,48 +1,21 @@
 name: actual-server
 services:
-  actual-server:
-    environment:
-      PGID: 1000
-      PUID: 1000
-      TZ: America/Sao_Paulo
+  actual_server:
+    container_name: actual_server
     image: actualbudget/actual-server:24.7.0
-    deploy:
-      resources:
-        reservations:
-          memory: "256M"
-    network_mode: bridge
     ports:
-      - "5006:5006"
-    restart: unless-stopped
+      - '5006:5006'
+    environment:
     volumes:
-      - /DATA/AppData/$AppID:/data
-    x-casaos:
-      envs:
-        - container: PUID
-          description:
-            en_us: ""
-        - container: PGID
-          description:
-            en_us: ""
-        - container: TZ
-          description:
-            en_us: ""
-      ports:
-        - container: "5006"
-          description:
-            en_us: ""
-      volumes:
-        - container: /data
-          description:
-            en_us: "Container Path: /data"
-    container_name: actual-server
+      - /DATA/AppData/actual:/data
+    restart: unless-stopped
 x-casaos:
   architectures:
     - amd64
     - arm64
   main: actual-server
   author: Wallace
-  category: WCasaOS
+  category: Finanças
   developer: Matiss Janis Aboltins
   project_url: https://actualbudget.org/
   description:
@@ -56,9 +29,7 @@ x-casaos:
     - https://actualbudget.org/img/homepage/actual-main-budget.png
     - https://actualbudget.org/img/homepage/actual-main-transaction.png
     - https://actualbudget.org/img/homepage/actual-report-cash-flow.png
-  tips: {}
   title:
     en_us: Actual Budget
-    pt_br: Actual Budget
   index: /
   port_map: "5006"
