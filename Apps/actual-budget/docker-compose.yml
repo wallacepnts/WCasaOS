@@ -1,6 +1,7 @@
 name: actual-server
 services:
   actual-server:
+    container_name: actual-server
     image: actualbudget/actual-server:24.7.0
     ports:
       - "5006:5006"
@@ -13,7 +14,7 @@ x-casaos:
     - arm64
   main: actual-server
   author: Wallace
-  category: WCasaOS
+  category: Finanças
   developer: Matiss Janis Aboltins
   project_url: https://actualbudget.org/
   description:
@@ -29,6 +30,5 @@ x-casaos:
     - https://actualbudget.org/img/homepage/actual-report-cash-flow.png
   title:
     en_us: Actual Budget
-    pt_br: Actual Budget
   index: /
   port_map: "5006"
