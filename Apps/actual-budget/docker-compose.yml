@@ -15,7 +15,7 @@ x-casaos:
     - arm64
   main: actual-server
   author: Wallace
-  category: Finanças
+  category: WCasaOS
   developer: Matiss Janis Aboltins
   project_url: https://actualbudget.org/
   description:
@@ -29,7 +29,9 @@ x-casaos:
     - https://actualbudget.org/img/homepage/actual-main-budget.png
     - https://actualbudget.org/img/homepage/actual-main-transaction.png
     - https://actualbudget.org/img/homepage/actual-report-cash-flow.png
+  tips: {}
   title:
     en_us: Actual Budget
+    pt_br: Actual Budget
   index: /
   port_map: "5006"
