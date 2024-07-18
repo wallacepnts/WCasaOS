@@ -3,6 +3,11 @@ services:
   immich-server:
     container_name: immich_server
     image: ghcr.io/immich-app/immich-server:v1.108.0
+    environment:
+      DB_USERNAME: casaos
+      DB_PASSWORD: casaos
+      DB_DATABASE_NAME: immich
+      DB_HOSTNAME: immich-postgres
     volumes:
       - /DATA/AppData/immich/upload:/usr/src/app/upload
       - /etc/localtime:/etc/localtime:ro
