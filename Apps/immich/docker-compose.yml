@@ -4,10 +4,13 @@ services:
     container_name: immich_server
     image: ghcr.io/immich-app/immich-server:v1.108.0
     environment:
+      DB_HOSTNAME: immich-postgres
       DB_USERNAME: casaos
       DB_PASSWORD: casaos
       DB_DATABASE_NAME: immich
-      DB_HOSTNAME: immich-postgres
+      DB_PORT: "5432"
+      REDIS_HOSTNAME: immich-redis
+      IMMICH_MACHINE_LEARNING_URL: http://immich-machine-learning:3003
     volumes:
       - /DATA/AppData/immich/upload:/usr/src/app/upload
       - /etc/localtime:/etc/localtime:ro
@@ -22,12 +25,17 @@ services:
     image: ghcr.io/immich-app/immich-machine-learning:v1.108.0
     volumes:
       - /DATA/AppData/immich/model-cache:/cache
+    environment: # Setting environment variables
+      DB_HOSTNAME: immich-postgres
+      DB_USERNAME: casaos
+      DB_PASSWORD: casaos
+      DB_DATABASE_NAME: casaos
+      DB_PORT: 5432
+      REDIS_HOSTNAME: immich-redis
     restart: always
   redis:
     container_name: immich_redis
     image: redis:6.2-alpine@sha256:328fe6a5822256d065debb36617a8169dbfbd77b797c525288e465f56c1d392b
-    healthcheck:
-      test: redis-cli ping || exit 1
     restart: always
   database:
     container_name: immich_postgres
@@ -36,7 +44,6 @@ services:
       POSTGRES_PASSWORD: casaos
       POSTGRES_USER: casaos
       POSTGRES_DB: immich
-      POSTGRES_INITDB_ARGS: '--data-checksums'
     volumes:
       - /DATA/AppData/immich/pgdata:/var/lib/postgresql/data
     restart: always
