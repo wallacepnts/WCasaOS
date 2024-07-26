@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+  flatnotes:
+    container_name: flatnotes
+    image: dullage/flatnotes:latest # Certifique-se de usar uma tag específica em vez de 'latest' [1]
+    environment:
+      PUID: 1000
+      PGID: 1000
+      FLATNOTES_AUTH_TYPE: "password"
+      FLATNOTES_USERNAME: "user"
+      FLATNOTES_PASSWORD: "changeMe!"
+      FLATNOTES_SECRET_KEY: "aLongRandomSeriesOfCharacters"
+    volumes:
+      - "./data:/data"
+      # Opcional. Permite salvar o índice de pesquisa em um local diferente:
+      # - "./index:/data/.flatnotes"
+    ports:
+      - "${WEBUI_PORT:-8080}:8080" # Utilize a variável WEBUI_PORT [2]
+    restart: unless-stopped
+
+x-casaos:
+  architectures: # Liste as arquiteturas suportadas [3]
+    - amd64
+    - arm64
+    - arm
+  main: flatnotes # Nome do serviço principal [3]
+  author: Seu Nome  # Substitua pelo seu nome [4]
+  category: Outros # Escolha a categoria mais adequada [4]
+  description:
+    pt_BR: Um aplicativo simples de blocos de notas. # Descrição em português [4]
+    en_US: A simple notepad application. # Descrição em inglês (opcional) [4]
+  developer: dullage # Nome do desenvolvedor da imagem Docker [4]
+  icon: https://exemplo.com/flatnotes/icon.png  # URL da imagem do ícone (192x192, fundo transparente) [5]
+  tagline:
+    pt_BR: Um aplicativo simples e rápido para anotações.  # Tagline em português [6]
+    en_US: A simple and fast note-taking app.  # Tagline em inglês (opcional) [6]
+  thumbnail: https://exemplo.com/flatnotes/thumbnail.png # URL da imagem em miniatura (784x442, cantos arredondados) [5]
+  title:
+    pt_BR: Flatnotes # Título em português [6]
+    en_US: Flatnotes # Título em inglês (opcional) [6]
+  tips:
+    before_install:
+      pt_BR: |
+        # Dicas de instalação em português [6]
+        Lembre-se de alterar a senha padrão após a instalação.
+  index: /  # Caminho para a página de índice [6]
+  port_map: ${WEBUI_PORT:-8080} # Porta mapeada para acesso externo [2]
