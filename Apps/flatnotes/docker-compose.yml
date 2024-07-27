@@ -1,5 +1,4 @@
-version: "3"
-
+name: flatnotes
 services:
   flatnotes:
     container_name: flatnotes
