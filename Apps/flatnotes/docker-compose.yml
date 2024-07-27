@@ -2,46 +2,41 @@ name: flatnotes
 services:
   flatnotes:
     container_name: flatnotes
-    image: dullage/flatnotes:latest # Certifique-se de usar uma tag específica em vez de 'latest' [1]
+    image: dullage/flatnotes:v5.2.2
     environment:
       - PUID=1000
       - PGID=1000
-      - FLATNOTES_AUTH_TYPE=password
-      - FLATNOTES_USERNAME=user
-      - FLATNOTES_PASSWORD=changeMe!
-      - FLATNOTES_SECRET_KEY=aLongRandomSeriesOfCharacters1234567890
+      - FLATNOTES_AUTH_TYPE=none
     volumes:
-      - "/DATA/AppData/flatnotes:/data"
-      # Opcional. Permite salvar o índice de pesquisa em um local diferente:
-      # - "./index:/data/.flatnotes"
+      - /DATA/AppData/flatnotes:/data
     ports:
-      - "${WEBUI_PORT:-8080}:8080" # Utilize a variável WEBUI_PORT [2]
+      - ${WEBUI_PORT:-8080}:8080
     restart: unless-stopped
 
 x-casaos:
-  architectures: # Liste as arquiteturas suportadas [3]
+  architectures:
     - amd64
     - arm64
     - arm
-  main: flatnotes # Nome do serviço principal [3]
-  author: Seu Nome  # Substitua pelo seu nome [4]
-  category: Outros # Escolha a categoria mais adequada [4]
+  main: flatnotes
+  author: Wallace
+  category: Outros
   description:
-    pt_BR: Um aplicativo simples de blocos de notas. # Descrição em português [4]
-    en_US: A simple notepad application. # Descrição em inglês (opcional) [4]
-  developer: dullage # Nome do desenvolvedor da imagem Docker [4]
-  icon: https://exemplo.com/flatnotes/icon.png  # URL da imagem do ícone (192x192, fundo transparente) [5]
+    pt_BR: Um aplicativo simples de blocos de notas.
+    en_US: A simple notepad application.
+  developer: dullage
+  icon: https://cdn.kubesail.com/prod/templates/jphj/flatnotes/88ad2612a951.jpg
   tagline:
-    pt_BR: Um aplicativo simples e rápido para anotações.  # Tagline em português [6]
-    en_US: A simple and fast note-taking app.  # Tagline em inglês (opcional) [6]
-  thumbnail: https://exemplo.com/flatnotes/thumbnail.png # URL da imagem em miniatura (784x442, cantos arredondados) [5]
+    pt_BR: Um aplicativo simples e rápido para anotações. 
+    en_US: A simple and fast note-taking app. 
+  thumbnail: https://exemplo.com/flatnotes/thumbnail.png 
   title:
-    pt_BR: Flatnotes # Título em português [6]
-    en_US: Flatnotes # Título em inglês (opcional) [6]
+    pt_BR: Flatnotes
+    en_US: Flatnotes
   tips:
     before_install:
       pt_BR: |
         # Dicas de instalação em português [6]
         Lembre-se de alterar a senha padrão após a instalação.
-  index: /  # Caminho para a página de índice [6]
-  port_map: ${WEBUI_PORT:-8080} # Porta mapeada para acesso externo [2]
+  index: / 
+  port_map: ${WEBUI_PORT:-8080}
