@@ -4,9 +4,9 @@ services:
     container_name: flatnotes
     image: dullage/flatnotes:v5.2.2
     environment:
-      - PUID=1000
-      - PGID=1000
-      - FLATNOTES_AUTH_TYPE=none
+      PUID: 1000
+      PGID: 1000
+      FLATNOTES_AUTH_TYPE: none
     volumes:
       - /DATA/AppData/flatnotes:/data
     ports:
