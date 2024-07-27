@@ -10,7 +10,7 @@ services:
     volumes:
       - /DATA/AppData/flatnotes:/data
     ports:
-      - ${WEBUI_PORT:-8080}:8080
+      - 8080:8080
     restart: unless-stopped
 
 x-casaos:
@@ -29,14 +29,7 @@ x-casaos:
   tagline:
     pt_BR: Um aplicativo simples e rápido para anotações. 
     en_US: A simple and fast note-taking app. 
-  thumbnail: https://exemplo.com/flatnotes/thumbnail.png 
   title:
-    pt_BR: Flatnotes
     en_US: Flatnotes
-  tips:
-    before_install:
-      pt_BR: |
-        # Dicas de instalação em português [6]
-        Lembre-se de alterar a senha padrão após a instalação.
   index: / 
-  port_map: ${WEBUI_PORT:-8080}
+  port_map: "8080"
