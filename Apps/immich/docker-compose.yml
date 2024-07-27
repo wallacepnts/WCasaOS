@@ -1,8 +1,9 @@
 name: immich
+
 services:
   immich-server:
     container_name: immich-server
-    image: ghcr.io/immich-app/immich-server:v1.108.0
+    image: altran1502/immich-server:release
     command: ["start.sh", "immich"]
     ports:
       - 2283:3001
@@ -10,53 +11,43 @@ services:
       - /DATA/AppData/immich/upload:/usr/src/app/upload
       - /etc/localtime:/etc/localtime:ro
     environment:
-      DB_HOSTNAME: immich-postgres
-      DB_USERNAME: casaos
-      DB_PASSWORD: casaos
-      DB_DATABASE_NAME: immich
-      DB_PORT: "5432"
-      TZ: America/Sao_Paulo
-      REDIS_HOSTNAME: immich-redis
-      IMMICH_MACHINE_LEARNING_URL: http://immich-machine-learning:3003
+      - DB_DATABASE_NAME=immich
+      - DB_PASSWORD=casaos
+      - DB_USERNAME=casaos
+      - TZ=America/Sao_Paulo
     depends_on:
       - redis
       - database
-    restart: always
-  immich-microservices:
-    container_name: immich-microservices
-    image: ghcr.io/immich-app/immich-server:v1.108.0
-    command: ["start.sh", "microservices"]
-    volumes:
-      - /DATA/AppData/immich/upload:/usr/src/app/upload
-    environment:
-      DB_HOSTNAME: immich-postgres
-      DB_USERNAME: casaos
-      DB_PASSWORD: casaos
-      DB_DATABASE_NAME: immich
-      DB_PORT: 5432
-      TZ: America/Sao_Paulo
-      REDIS_HOSTNAME: immich-redis
-    depends_on:
-      - redis
-      - database
-    restart: always
+    restart: unless-stopped
+    networks:
+      - immich
+    privileged: false
+
   immich-machine-learning:
     container_name: immich-machine-learning
-    image: ghcr.io/immich-app/immich-machine-learning:v1.108.0
+    image: altran1502/immich-machine-learning:release
     volumes:
       - /DATA/AppData/immich/model-cache:/cache
     environment:
-      DB_HOSTNAME: immich-postgres
-      DB_USERNAME: casaos
-      DB_PASSWORD: casaos
-      DB_DATABASE_NAME: casaos
-      DB_PORT: 5432
-      REDIS_HOSTNAME: immich-redis
-    restart: always
+      - DB_DATABASE_NAME=immich
+      - DB_PASSWORD=casaos
+      - DB_USERNAME=casaos
+    restart: unless-stopped
+    networks:
+      - immich
+    privileged: false
+
   redis:
     container_name: immich-redis
-    image: redis:6.2-alpine@sha256:328fe6a5822256d065debb36617a8169dbfbd77b797c525288e465f56c1d392b
-    restart: always
+    image: redis:6.2-alpine
+    healthcheck:
+      test: redis-cli ping || exit 1
+    volumes:
+      - /DATA/AppData/immich/redis:/data
+    restart: unless-stopped
+    networks:
+      - immich
+
   database:
     container_name: immich-postgres
     image: tensorchord/pgvecto-rs:pg14-v0.2.0
@@ -64,10 +55,23 @@ services:
       POSTGRES_PASSWORD: casaos
       POSTGRES_USER: casaos
       POSTGRES_DB: immich
-      PG_DATA: /var/lib/postgresql/data
+      POSTGRES_INITDB_ARGS: '--data-checksums'
     volumes:
       - /DATA/AppData/immich/pgdata:/var/lib/postgresql/data
-    restart: always
+    healthcheck:
+      test: pg_isready --dbname='${DB_DATABASE_NAME}' || exit 1; Chksum="$$(psql --dbname='${DB_DATABASE_NAME}' --username='${DB_USERNAME}' --tuples-only --no-align --command='SELECT COALESCE(SUM(checksum_failures), 0) FROM pg_stat_database')"; echo "checksum failure count is $$Chksum"; [ "$$Chksum" = '0' ] || exit 1
+      interval: 5m
+      start_interval: 30s
+      start_period: 5m
+    command: ["postgres", "-c", "shared_preload_libraries=vectors.so", "-c", 'search_path="$$user", public, vectors', "-c", "logging_collector=on", "-c", "max_wal_size=2GB", "-c", "shared_buffers=512MB", "-c", "wal_compression=on"]
+    restart: unless-stopped
+    networks:
+      - immich
+
+networks:
+  immich:
+    name: immich
+
 x-casaos:
   architectures:
     - amd64
