@@ -10,7 +10,8 @@ services:
     volumes:
       - /DATA/AppData/flatnotes:/data
     ports:
-      - ${WEBUI_PORT:-8080}:8080
+      - target: 8080
+      published: ${WEBUI_PORT:-8080}
     restart: unless-stopped
 
 x-casaos:
@@ -32,4 +33,4 @@ x-casaos:
   title:
     en_US: Flatnotes
   index: / 
-  port_map: "8080"
+  port_map: ${WEBUI_PORT}
