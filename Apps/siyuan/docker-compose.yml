@@ -2,7 +2,7 @@ name: siyuan
 services:
   siyuan:
     container_name: siyuan
-    image: b3log/siyuan
+    image: b3log/siyuan:v3.1.1
     command: ['--workspace=/siyuan/workspace/', '--accessAuthCode=casaos']
     user: '1000:1000'
     ports:
