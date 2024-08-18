@@ -1,14 +1,15 @@
 version: '3'
 services:
   openwebui:
-    image: ghcr.io/open-webui/open-webui:v0.3.13
+    image: ghcr.io/open-webui/open-webui:ollama
+    ipc: host
     ports:
-      - "8080:8080"
-    environment:
-      - OLLAMA_BASE_URL=http://ollama:11434
-    restart: unless-stopped
+      - "30000:8080"
+    network_mode: bridge
+    restart: always
     volumes:
-      - /DATA/AppData/open-webui:/app/backend/data
+      - /DATA/AppData/open-webui/data:/app/backend/data
+      - /DATA/AppData/ollama:/root/.ollama
 x-casaos:
   architectures:
     - amd64
@@ -17,6 +18,6 @@ x-casaos:
   category: WCasaOS
   icon: https://avatars.githubusercontent.com/u/158137808?s=280&v=4
   index: /
-  port_map: "8080"
+  port_map: "30000"
   title:
     custom: Open WebUI
