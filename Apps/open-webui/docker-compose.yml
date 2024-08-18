@@ -13,15 +13,15 @@ services:
   openwebui:
     container_name: open-webui
     environment:
-      - OLLAMA_BASE_URL='/ollama'
+      OLLAMA_BASE_URL: http://172.25.22.138:11434
     image: ghcr.io/open-webui/open-webui:v0.3.13
-    labels:
-      icon: https://avatars.githubusercontent.com/u/158137808?s=280&v=4
     ports:
       - "8080:8080"
-    restart: always
+    restart: unless-stopped
     volumes:
       - /DATA/AppData/open-webui:/app/backend/data
+    depends_on:
+      - ollama
 
 x-casaos:
   architectures:
