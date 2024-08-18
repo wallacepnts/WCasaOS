@@ -14,7 +14,7 @@ x-casaos:
   architectures:
     - amd64
     - arm64
-  main: open-webui
+  main: ollama
   author: Wallace
   category: WCasaOS
   description:
@@ -22,9 +22,8 @@ x-casaos:
   tagline:
     en_us: "OpenWebUI"
   developer: "OpenWebUI"
-  author: "eudard"
   icon: "https://avatars.githubusercontent.com/u/158137808?s=280&v=4"
   thumbnail: "https://github.com/open-webui/open-webui/raw/main/demo.gif"
   title:
     en_us: "OpenWebUI"
-  port_map: "30000"
+  port_map: "11434:11434"
