@@ -11,16 +11,14 @@ services:
       - /DATA/AppData/open-webui/ollama:/root/.ollama
   openwebui:
     container_name: open-webui
-    environment:
-      OLLAMA_BASE_URL: http://172.25.22.138:11434
     image: ghcr.io/open-webui/open-webui:latest
     ports:
       - "8080:8080"
     restart: unless-stopped
     volumes:
       - /DATA/AppData/open-webui:/app/backend/data
-    depends_on:
-      - ollama
+    environment:
+      OLLAMA_BASE_URL: http://172.25.22.138:11434
 x-casaos:
   architectures:
     - amd64
