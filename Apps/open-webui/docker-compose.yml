@@ -22,8 +22,6 @@ services:
     restart: always
     volumes:
       - /DATA/AppData/open-webui:/app/backend/data
-    depends_on:
-      - ollama
 
 x-casaos:
   architectures:
