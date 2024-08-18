@@ -19,7 +19,7 @@ x-casaos:
   developer: Tim J. Baek
   author: Wallace
   category: WCasaOS
-  icon: https://cdn.jsdelivr.net/gh/wallacepnts/WCasaOS@main/Apps/OpenWebUI/icon.png
+  icon: https://raw.githubusercontent.com/wallacepnts/WCasaOS/main/Apps/open-webui/icon.png
   index: /
   port_map: "30000"
   title:
