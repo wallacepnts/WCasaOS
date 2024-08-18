@@ -1,38 +1,39 @@
 name: open-webui
-services: 
+services:
   ollama:
     container_name: ollama
     image: ollama/ollama:0.3.6
-    tty: true
     ports:
       - "11434:11434"
+    pull_policy: always
+    tty: true
     restart: unless-stopped
     volumes:
       - /DATA/AppData/open-webui/ollama:/root/.ollama
   openwebui:
     container_name: open-webui
-    image: ghcr.io/open-webui/open-webui:latest
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    image: ghcr.io/open-webui/open-webui:v0.3.13
     ports:
       - "8080:8080"
     restart: unless-stopped
     volumes:
-      - /DATA/AppData/open-webui:/app/backend/data
-    environment:
-      OLLAMA_BASE_URL: http://172.25.22.138:11434
+      - /DATA/AppData/open-webui/data:/app/backend/data
 x-casaos:
   architectures:
     - amd64
     - arm64
   main: open-webui
-  author: Wallace
-  category: WCasaOS
   description:
     en_us: "Open source web interface for local AI services"
   tagline:
     en_us: "OpenWebUI"
   developer: "OpenWebUI"
+  author: "eudard"
   icon: "https://avatars.githubusercontent.com/u/158137808?s=280&v=4"
   thumbnail: "https://github.com/open-webui/open-webui/raw/main/demo.gif"
   title:
     en_us: "OpenWebUI"
+  category: "SelfhostAI"
   port_map: "8080"
