@@ -1,7 +1,7 @@
 name: open-webui
 services:
-  container_name: open-webui
   open-webui:
+    container_name: open-webui
     image: ghcr.io/open-webui/open-webui:ollama
     ipc: host
     ports:
@@ -11,6 +11,7 @@ services:
     volumes:
       - /DATA/AppData/open-webui/data:/app/backend/data
       - /DATA/AppData/open-webui/ollama:/root/.ollama
+
 x-casaos:
   architectures:
     - amd64
