@@ -9,12 +9,27 @@ services:
     restart: unless-stopped
     volumes:
       - /DATA/AppData/open-webui/ollama:/root/.ollama
+  
+  openwebui:
+    container_name: open-webui
+    environment:
+      - OLLAMA_BASE_URL= '/ollama'
+    image: ghcr.io/open-webui/open-webui:v0.3.13
+    labels:
+      icon: https://avatars.githubusercontent.com/u/158137808?s=280&v=4
+    ports:
+      - "8080:8080"
+    restart: always
+    volumes:
+      - /DATA/AppData/open-webui:/app/backend/data
+    depends_on:
+      - ollama
 
 x-casaos:
   architectures:
     - amd64
     - arm64
-  main: ollama
+  main: open-webui
   author: Wallace
   category: WCasaOS
   description:
@@ -26,4 +41,4 @@ x-casaos:
   thumbnail: "https://github.com/open-webui/open-webui/raw/main/demo.gif"
   title:
     en_us: "OpenWebUI"
-  port_map: "11434"
+  port_map: "8080"
