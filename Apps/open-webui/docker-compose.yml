@@ -1,6 +1,7 @@
-version: '3'
+name: open-webui
 services:
-  openwebui:
+  container_name: open-webui
+  open-webui:
     image: ghcr.io/open-webui/open-webui:ollama
     ipc: host
     ports:
@@ -9,14 +10,16 @@ services:
     restart: always
     volumes:
       - /DATA/AppData/open-webui/data:/app/backend/data
-      - /DATA/AppData/ollama:/root/.ollama
+      - /DATA/AppData/open-webui/ollama:/root/.ollama
 x-casaos:
   architectures:
     - amd64
     - arm64
+  main: open-webui
+  developer: Tim J. Baek
   author: Wallace
   category: WCasaOS
-  icon: https://avatars.githubusercontent.com/u/158137808?s=280&v=4
+  icon: https://cdn.jsdelivr.net/gh/wallacepnts/WCasaOS@main/Apps/OpenWebUI/icon.png
   index: /
   port_map: "30000"
   title:
