@@ -1,0 +1,11 @@
+name: open-webui
+services: 
+    ollama:
+      container_name: ollama
+      image: ollama/ollama:0.3.6
+      tty: true
+      ports:
+        - "11434:11434"
+      restart: unless-stopped
+      volumes:
+        - /DATA/AppData/open-webui/ollama:/root/.ollama
