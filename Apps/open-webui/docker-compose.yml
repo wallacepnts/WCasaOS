@@ -1,0 +1,22 @@
+version: '3'
+services:
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:v0.3.13
+    ports:
+      - "8080:8080"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/open-webui:/app/backend/data
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+  author: Wallace
+  category: WCasaOS
+  icon: https://avatars.githubusercontent.com/u/158137808?s=280&v=4
+  index: /
+  port_map: "8080"
+  title:
+    custom: Open WebUI
