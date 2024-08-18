@@ -26,4 +26,4 @@ x-casaos:
   thumbnail: "https://github.com/open-webui/open-webui/raw/main/demo.gif"
   title:
     en_us: "OpenWebUI"
-  port_map: "11434:11434"
+  port_map: "11434"
