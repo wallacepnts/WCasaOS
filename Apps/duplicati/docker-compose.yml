@@ -1,7 +1,7 @@
-name: duplicati
+name: duplicati2
 services:
   duplicati:
-    container_name: duplicati
+    container_name: duplicati2
     image: linuxserver/duplicati:2.0.8
     environment:
       - PUID=0
@@ -18,7 +18,7 @@ x-casaos:
   architectures:
     - amd64
     - arm64
-  main: duplicati
+  main: duplicati2
   author: Wallace
   category: Backup
   developer: Daniel Quinn
