@@ -30,6 +30,6 @@ x-casaos:
     pt_br: Sistema para backup que funciona com vários serviços na nuvem.
   icon: https://icon.casaos.io/main/all/duplicati.png
   title:
-    en_us: Duplicati
+    custom: Duplicati2
   index: /
   port_map: "8200"
