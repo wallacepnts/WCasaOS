@@ -1,0 +1,41 @@
+name: jellyfin
+services:
+  jellyfin:
+    container_name: jellyfin
+    image: linuxserver/jellyfin:10.9.10
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Sao_Paulo
+    volumes:
+      - /mnt/d/CasaOS/AppData/jellyfin/config:/config
+      - /mnt/d/CasaOS/AppData/jellyfin/cache:/cache
+      - type: bind
+        source: /mnt/e/Jellyfin/Filmes
+        target: /media
+        read_only: true
+    ports:
+      - 8096:8096
+      - 8920:8920
+      - 7359:7359/udp
+      - 1900:1900/udp
+    restart: unless-stopped
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+  main: jellyfin
+  author: Wallace
+  category: Media
+  developer: Daniel Quinn
+  description:
+    en_us: Duplicati⁠ works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC and many others.
+    pt_br: Duplicati trabalha com protocolos padrão como FTP, SSH, WebDAV, além de serviços populares como Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC e muitos outros.
+  tagline:
+    en_us: System for backup that works with various cloud services.
+    pt_br: Sistema para backup que funciona com vários serviços na nuvem.
+  icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Jellyfin/icon.png
+  title:
+    custom: Jellyfin
+  index: /
+  port_map: "8096"
