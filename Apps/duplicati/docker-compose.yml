@@ -1,7 +1,7 @@
-name: duplicati2
+name: duplicati
 services:
   duplicati:
-    container_name: duplicati2
+    container_name: duplicati
     image: linuxserver/duplicati:2.0.8
     environment:
       - PUID=0
@@ -18,7 +18,7 @@ x-casaos:
   architectures:
     - amd64
     - arm64
-  main: duplicati2
+  main: duplicati
   author: Wallace
   category: Backup
   developer: Daniel Quinn
@@ -30,6 +30,6 @@ x-casaos:
     pt_br: Sistema para backup que funciona com vários serviços na nuvem.
   icon: https://icon.casaos.io/main/all/duplicati.png
   title:
-    custom: Duplicati2
+    custom: Duplicati
   index: /
   port_map: "8200"
