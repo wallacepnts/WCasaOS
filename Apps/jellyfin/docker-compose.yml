@@ -8,8 +8,7 @@ services:
       - PGID=1000
       - TZ=America/Sao_Paulo
     volumes:
-      - /mnt/d/CasaOS/AppData/jellyfin/config:/config
-      - /mnt/d/CasaOS/AppData/jellyfin/cache:/cache
+      - /DATA/AppData/jellyfin:/config
       - type: bind
         source: /mnt/e/Jellyfin/Filmes
         target: /media
