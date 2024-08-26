@@ -7,7 +7,7 @@ services:
     ports:
       - 2283:3001
     volumes:
-      - /DATA/AppData/immich/upload:/usr/src/app/upload
+      - /mnt/d/CasaOS/AppData/immich/upload:/usr/src/app/upload:rw
       - /etc/localtime:/etc/localtime:ro
     environment:
       DB_HOSTNAME: immich-postgres
@@ -27,7 +27,7 @@ services:
     image: ghcr.io/immich-app/immich-server:v1.112.1
     command: ["start.sh", "microservices"]
     volumes:
-      - /DATA/AppData/immich/upload:/usr/src/app/upload
+      - /mnt/d/CasaOS/AppData/immich/upload:/usr/src/app/upload:rw
     environment:
       DB_HOSTNAME: immich-postgres
       DB_USERNAME: casaos
@@ -44,7 +44,7 @@ services:
     container_name: immich-machine-learning
     image: ghcr.io/immich-app/immich-machine-learning:v1.112.1
     volumes:
-      - /DATA/AppData/immich/model-cache:/cache
+      - /mnt/d/CasaOS/AppData/immich/model-cache:/cache:rw
     environment:
       DB_HOSTNAME: immich-postgres
       DB_USERNAME: casaos
@@ -66,7 +66,7 @@ services:
       POSTGRES_DB: immich
       PG_DATA: /var/lib/postgresql/data
     volumes:
-      - /DATA/AppData/immich/pgdata:/var/lib/postgresql/data
+      - /mnt/d/CasaOS/AppData/immich/pgdata:/var/lib/postgresql/data:rw
     restart: always
 x-casaos:
   architectures:
