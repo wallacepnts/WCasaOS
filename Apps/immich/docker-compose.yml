@@ -59,7 +59,7 @@ services:
     restart: always
   database:
     container_name: immich-postgres
-    image: tensorchord/pgvecto-rs:pg14-v0.3.0
+    image: tensorchord/pgvecto-rs:pg14-v0.2.0
     environment:
       POSTGRES_PASSWORD: casaos
       POSTGRES_USER: casaos
