@@ -65,6 +65,7 @@ services:
       POSTGRES_USER: casaos
       POSTGRES_DB: immich
       PG_DATA: /var/lib/postgresql/data
+      POSTGRES_HOST: localhost
     volumes:
       - /mnt/d/CasaOS/AppData/immich/pgdata:/var/lib/postgresql/data:rw
     restart: always
