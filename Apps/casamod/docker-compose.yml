@@ -5,6 +5,9 @@ services:
     #build: .
     container_name: casamod
     image: cp0204/casamod:latest
+    environment:
+      - PUID=0
+      - PGID=0
     volumes:
       - /DATA/AppData/casamod:/DATA/AppData/casamod
       - /var/lib/casaos/www:/var/lib/casaos/www
