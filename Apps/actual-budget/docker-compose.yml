@@ -5,6 +5,9 @@ services:
     image: actualbudget/actual-server:25.2.1
     ports:
       - "5006:5006"
+    labels:
+      tsdproxy.enable: true
+      tsdproxy.name: actual
     restart: unless-stopped
     volumes:
       - /DATA/AppData/actual:/data
