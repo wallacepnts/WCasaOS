@@ -22,6 +22,8 @@ services:
       timeout: 5s
       retries: 12
       start_period: 10s
+    networks:
+      - any-sync-bundle
 
   redis:
     image: docker.io/redis/redis-stack-server:7.4.0-v7
@@ -51,6 +53,8 @@ services:
       timeout: 5s
       retries: 12
       start_period: 5s
+    networks:
+      - any-sync-bundle
 
   any-sync-bundle:
     image: ghcr.io/grishy/any-sync-bundle:1.3.0-2026-01-31-minimal
@@ -71,6 +75,12 @@ services:
       ANY_SYNC_BUNDLE_INIT_MONGO_URI: "mongodb://mongo:27017/?replicaSet=rs0"
       ANY_SYNC_BUNDLE_INIT_REDIS_URI: "redis://redis:6379/"
       ANY_SYNC_BUNDLE_INIT_FILENODE_DEFAULT_LIMIT: "2199023255552"
+    networks:
+      - any-sync-bundle
+networks:
+  any-sync-bundle:
+    name: any-sync-bundle
+    driver: bridge
 
 x-casaos:
   architectures:
@@ -81,4 +91,4 @@ x-casaos:
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/anytype.png
   index: /
   title:
-    custom: Any-sync-bundle
+    custom: Any Sync Bundle
