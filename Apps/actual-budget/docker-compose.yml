@@ -19,6 +19,7 @@ services:
       - actual
 networks:
   actual:
+    name: actual
     driver: bridge
 x-casaos:
   architectures:
