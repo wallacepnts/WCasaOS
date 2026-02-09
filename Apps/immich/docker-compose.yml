@@ -74,6 +74,7 @@ x-casaos:
     - amd64
     - arm64
   main: immich-server
+  category: WCasaOS
   description:
     en_us: Self-hosted photo and video storage.
   tagline:
