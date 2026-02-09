@@ -1,0 +1,32 @@
+name: tsdproxy
+services:
+  tsdproxy:
+    image: almeidapaulopt/tsdproxy:2
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /DATA/AppData/tsdproxy/data:/data
+      - /DATA/AppData/tsdproxy/config:/config
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - tsdproxy
+networks:
+  tsdproxy:
+    name: tsdproxy
+    driver: bridge
+x-casaos:
+  author: self
+  category: self
+  hostname: ""
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/tsd-proxy.png
+  index: /
+  is_uncontrolled: false
+  port_map: "8080"
+  scheme: http
+  store_app_id: tsdproxy
+  title:
+    custom: TSDProxy
+    en_us: tsdproxy
