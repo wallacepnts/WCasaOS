@@ -28,4 +28,4 @@ x-casaos:
   index: /
   port_map: "5252"
   title:
-    custom: tailscale
+    en_us: Tailscale Wallace
