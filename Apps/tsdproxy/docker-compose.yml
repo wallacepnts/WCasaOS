@@ -19,12 +19,10 @@ networks:
     name: tsdproxy
     driver: bridge
 x-casaos:
-  main: tsdproxy
-  author: self
-  category: self
+  architectures:
+    - amd64
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/tsd-proxy.png
   index: /
   port_map: "8080"
   title:
     custom: TSDProxy
-    en_us: tsdproxy
