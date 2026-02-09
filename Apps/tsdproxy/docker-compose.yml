@@ -22,6 +22,7 @@ x-casaos:
   architectures:
     - amd64
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/tsd-proxy.png
+  category: WCasaOS
   index: /
   port_map: "8080"
   title:
