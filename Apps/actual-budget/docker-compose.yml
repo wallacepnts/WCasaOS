@@ -2,12 +2,19 @@ name: actual-server
 services:
   actual-server:
     container_name: actual-server
-    image: actualbudget/actual-server:24.8.0
+    image: actualbudget/actual-server:25.2.1
     ports:
       - "5006:5006"
     restart: unless-stopped
     volumes:
-      - /DATA/AppData/actual-budget:/data
+      - /DATA/AppData/actual:/data
+    healthcheck:
+      # Enable health check for the instance
+      test: ["CMD-SHELL", "node src/scripts/health-check.js"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
 x-casaos:
   architectures:
     - amd64
@@ -23,7 +30,7 @@ x-casaos:
   tagline:
     en_us: Local-first OpenSource Budget tool
     pt_br: Ferramenta de orçamento OpenSource local
-  icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/actual.png
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/actual-budget.png
   screenshot_link:
     - https://actualbudget.org/img/homepage/actual-main-budget.png
     - https://actualbudget.org/img/homepage/actual-main-transaction.png
