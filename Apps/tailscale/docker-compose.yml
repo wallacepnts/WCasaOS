@@ -1,0 +1,61 @@
+name: tailscale
+services:
+  tailscale:
+    container_name: tailscale
+    image: tailscale/tailscale:v1.94.1
+    environment:
+      - TS_STATE_DIR=/var/lib/tailscale
+    volumes:
+      - /DATA/AppData/tailscale:/var/lib/tailscale
+      - /dev/net/tun:/dev/net/tun
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    entrypoint:
+      - /bin/sh
+      - -c
+      - tailscaled --state=/var/lib/tailscale/tailscaled.state & sleep 10;
+        tailscale web --listen 0.0.0.0:5252
+    network_mode: host
+x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
+    - "386"
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/tailscale.png
+  index: /
+  port_map: "5252"
+  title:
+    custom: tailscale
+
+name: tailscale
+services:
+  tailscale:
+    container_name: tailscale
+    image: tailscale/tailscale:v1.94.1
+    restart: unless-stopped
+    environment:
+      - TS_STATE_DIR=/var/lib/tailscale
+    volumes:
+      - /DATA/AppData/tailscale:/var/lib/tailscale
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    entrypoint:
+      - /bin/sh
+      - -c
+      - tailscaled --state=/var/lib/tailscale/tailscaled.state & sleep 10;
+        tailscale web --listen 0.0.0.0:5252
+    network_mode: host
+x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
+    - "386"
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/tailscale.png
+  title:
+    custom: tailscale
