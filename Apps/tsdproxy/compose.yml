@@ -1,6 +1,7 @@
 name: tsdproxy
 services:
   tsdproxy:
+    container_name: tsdproxy
     image: almeidapaulopt/tsdproxy:2
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -18,6 +19,7 @@ networks:
     name: tsdproxy
     driver: bridge
 x-casaos:
+  main: tsdproxy
   author: self
   category: self
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/tsd-proxy.png
