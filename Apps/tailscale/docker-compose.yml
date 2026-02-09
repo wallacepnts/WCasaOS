@@ -24,8 +24,9 @@ x-casaos:
     - arm
     - arm64
     - "386"
+  category: WCasaOS
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/tailscale.png
   index: /
   port_map: "5252"
   title:
-    en_us: Tailscale Wallace
+    custom: Tailscale
