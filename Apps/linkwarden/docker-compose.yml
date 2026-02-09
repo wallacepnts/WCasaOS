@@ -1,0 +1,49 @@
+name: linkwarden
+services:
+  app:
+    container_name: linkwarden
+    image: ghcr.io/linkwarden/linkwarden:v2.13.5
+    labels:
+      tsdproxy.enable: "true"
+      tsdproxy.name: linkwarden
+    restart: always
+    volumes:
+      -  /DATA/AppData/linkwarden/data:/data/data
+    environment:
+      - DATABASE_URL=postgresql://postgres:linkwardenpass@linkwarden-db:5432/linkwarden
+      - NEXTAUTH_SECRET=RH4f4rPJOuVtCmLboQbxHsT+M3Ij+oZDMXOaWu7zBi/yAhWfSW/R4YuADgSVIQI0
+      - NEXTAUTH_URL=http://localhost/api/v1/auth
+      - NEXT_PUBLIC_DISABLE_REGISTRATION="true"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - linkwarden-db
+    networks:
+      - linkwarden
+  linkwarden-db:
+    container_name: linkwarden-db
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=linkwardenpass
+      - POSTGRES_DB=linkwarden
+    volumes:
+      - /DATA/AppData/linkwarden/postgres:/var/lib/postgresql/data
+    networks:
+      - linkwarden
+networks:
+  linkwarden:
+    name: linkwarden
+    driver: bridge
+
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+  category: WCasaOS
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/linkwarden.png
+  index: /
+  port_map: "3000"
+  title:
+    custom: Linkwarden
