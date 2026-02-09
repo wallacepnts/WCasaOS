@@ -1,4 +1,4 @@
-name: tailscale
+name: tailscale-w
 services:
   tailscale:
     container_name: tailscale
