@@ -25,3 +25,4 @@ x-casaos:
   port_map: "8080"
   title:
     custom: TSDProxy
+    en_us: tsdproxy
