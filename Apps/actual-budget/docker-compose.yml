@@ -1,7 +1,7 @@
-name: actual-server
+name: actual
 services:
-  actual-server:
-    container_name: actual-server
+  actual:
+    container_name: actual
     image: actualbudget/actual-server:25.2.1
     ports:
       - "5006:5006"
@@ -15,11 +15,16 @@ services:
       timeout: 10s
       retries: 3
       start_period: 20s
+    networks:
+      - actual
+networks:
+  actual:
+    driver: bridge
 x-casaos:
   architectures:
     - amd64
     - arm64
-  main: actual-server
+  main: actual
   author: Wallace
   category: WCasaOS
   developer: Matiss Janis Aboltins
