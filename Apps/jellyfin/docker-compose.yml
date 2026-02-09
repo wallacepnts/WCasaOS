@@ -24,7 +24,7 @@ x-casaos:
     - arm64
   main: jellyfin
   author: Wallace
-  category: Media
+  category: WCasaOS
   developer: Daniel Quinn
   description:
     en_us: Duplicati⁠ works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC and many others.
