@@ -6,7 +6,7 @@ services:
     labels:
       tsdproxy.enable: "true"
       tsdproxy.name: linkwarden
-    restart: always
+    restart: unless-stopped
     volumes:
       -  /DATA/AppData/linkwarden/data:/data/data
     environment:
@@ -23,7 +23,7 @@ services:
   linkwarden-db:
     container_name: linkwarden-db
     image: postgres:16-alpine
-    restart: always
+    restart: unless-stopped
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=linkwardenpass
