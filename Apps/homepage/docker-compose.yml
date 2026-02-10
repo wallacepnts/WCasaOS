@@ -19,7 +19,7 @@ x-casaos:
   architectures:
     - amd64
     - arm64
-  category: homepage
+  category: WCasaOS
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/homepage.png
   index: /
   port_map: "3001"
