@@ -1,6 +1,6 @@
 name: linkwarden
 services:
-  app:
+  linkwarden:
     container_name: linkwarden
     image: ghcr.io/linkwarden/linkwarden:v2.13.5
     labels:
@@ -42,6 +42,7 @@ x-casaos:
     - amd64
     - arm64
   category: WCasaOS
+  main: linkwarden
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/linkwarden.png
   index: /
   port_map: "3000"
