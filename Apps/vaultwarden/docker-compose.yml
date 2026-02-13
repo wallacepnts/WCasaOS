@@ -29,12 +29,5 @@ x-casaos:
   main: vaultwarden
   category: WCasaOS
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/vaultwarden-light.png
-  index: /
-  port_map: "10380"
   title:
     custom: Vaultwarden
-  envs:
-    - container: vaultwarden
-      name: DOMAIN
-      description: Domain URL
-      value: https://vw.domain.tld
