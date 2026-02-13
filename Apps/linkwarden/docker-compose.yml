@@ -20,6 +20,7 @@ services:
       - linkwarden-db
     networks:
       - linkwarden
+
   linkwarden-db:
     container_name: linkwarden-db
     image: postgres:16-alpine
@@ -32,6 +33,7 @@ services:
       - /DATA/AppData/linkwarden/postgres:/var/lib/postgresql/data
     networks:
       - linkwarden
+      
 networks:
   linkwarden:
     name: linkwarden

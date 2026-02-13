@@ -18,6 +18,7 @@ services:
       - tailscaled --state=/var/lib/tailscale/tailscaled.state & sleep 10;
         tailscale web --listen 0.0.0.0:5252
     network_mode: host
+    
 x-casaos:
   architectures:
     - amd64

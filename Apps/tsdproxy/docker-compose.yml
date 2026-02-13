@@ -14,10 +14,12 @@ services:
       - "host.docker.internal:host-gateway"
     networks:
       - tsdproxy
+
 networks:
   tsdproxy:
     name: tsdproxy
     driver: bridge
+    
 x-casaos:
   architectures:
     - amd64

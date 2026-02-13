@@ -5,6 +5,9 @@ services:
     container_name: homepage
     ports:
       - 3001:3000
+    labels:
+      tsdproxy.enable: true
+      tsdproxy.name: homepage
     volumes:
       - /DATA/AppData/homepage:/app/config
       - /var/run/docker.sock:/var/run/docker.sock
@@ -12,6 +15,7 @@ services:
       HOMEPAGE_ALLOWED_HOSTS: *
     networks:
       - homepage
+      
 networks:
   homepage:
     name: homepage

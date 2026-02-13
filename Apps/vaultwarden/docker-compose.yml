@@ -1,0 +1,15 @@
+name: vaultwarden
+services:
+  vaultwarden:
+    image: vaultwarden/server:1.35.3
+    container_name: vaultwarden
+    labels:
+      tsdproxy.enable: true
+      tsdproxy.name: vaultwarden
+    restart: unless-stopped
+    environment:
+      DOMAIN: "https://vaultwarden.anaconda-amberjack.ts.net"
+    volumes:
+      - /DATA/AppData/vaultwarden:/data/
+    ports:
+      - 81:80
