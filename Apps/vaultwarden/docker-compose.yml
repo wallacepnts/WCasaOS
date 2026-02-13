@@ -33,3 +33,8 @@ x-casaos:
   port_map: "10380"
   title:
     custom: Vaultwarden
+  envs:
+    - container: vaultwarden
+      name: DOMAIN
+      description: Domain URL
+      value: https://vw.domain.tld
