@@ -13,3 +13,21 @@ services:
       - /DATA/AppData/vaultwarden:/data/
     ports:
       - 81:80
+    networks:
+      - vaultwarden
+      
+networks:
+  vaultwarden:
+    name: vaultwarden
+    driver: bridge
+
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+  category: WCasaOS
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/vaultwarden.png
+  index: /
+  port_map: "01"
+  title:
+    custom: Vaultwarden
