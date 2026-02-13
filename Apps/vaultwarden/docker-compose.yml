@@ -1,6 +1,6 @@
-name: vaultwarden
+name: vaultwarden-w
 services:
-  vaultwarden:
+  vaultwarden-w:
     image: vaultwarden/server:1.35.3
     container_name: vaultwarden
     labels:
@@ -26,7 +26,7 @@ x-casaos:
     - amd64
     - arm
     - arm64
-  main: vaultwarden
+  main: vaultwarden-w
   category: WCasaOS
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/vaultwarden.png
   index: /
