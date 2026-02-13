@@ -8,11 +8,11 @@ services:
       tsdproxy.name: vaultwarden
     restart: unless-stopped
     environment:
-      DOMAIN: "https://vaultwarden.anaconda-amberjack.ts.net"
+      DOMAIN: "https://vw.domain.tld"
     volumes:
       - /DATA/AppData/vaultwarden:/data/
     ports:
-      - 81:80
+      - 10380:80
     networks:
       - vaultwarden
       
@@ -24,10 +24,12 @@ networks:
 x-casaos:
   architectures:
     - amd64
+    - arm
     - arm64
+  main: vaultwarden
   category: WCasaOS
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/vaultwarden.png
   index: /
-  port_map: "01"
+  port_map: "10380"
   title:
     custom: Vaultwarden
