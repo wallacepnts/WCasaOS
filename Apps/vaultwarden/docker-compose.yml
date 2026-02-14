@@ -27,6 +27,7 @@ x-casaos:
     - arm
     - arm64
   main: vaultwarden
+  port_map: "10380"
   category: WCasaOS
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/vaultwarden-light.png
   title:

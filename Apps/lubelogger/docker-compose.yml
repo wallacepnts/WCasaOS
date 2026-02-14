@@ -1,0 +1,36 @@
+name: lubelogger
+services:
+  lubelogger:
+    image: ghcr.io/hargata/lubelogger:v1.6.0
+    container_name: lubelogger
+    labels:
+      tsdproxy.enable: true
+      tsdproxy.name: lubelogger
+    restart: unless-stopped
+    environment:
+      - DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+      - LANG=pt_BR.UTF-8
+    volumes:
+      - /DATA/AppData/lubelogger/data:/App/data
+      - /DATA/AppData/lubelogger/keys:/root/.aspnet/DataProtection-Keys
+    ports:
+      - 8180:8080
+    networks:
+      - lubelogger
+      
+networks:
+  lubelogger:
+    name: vaultwarden
+    driver: lubelogger
+
+x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
+  main: lubelogger
+  port_map: "8180"
+  category: WCasaOS
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/lubelogger.png
+  title:
+    custom: Lubelogger
