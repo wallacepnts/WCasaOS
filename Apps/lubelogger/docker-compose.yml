@@ -20,8 +20,8 @@ services:
       
 networks:
   lubelogger:
-    name: vaultwarden
-    driver: lubelogger
+    name: lubelogger
+    driver: bridge
 
 x-casaos:
   architectures:
