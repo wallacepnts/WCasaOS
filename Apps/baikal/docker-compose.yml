@@ -1,0 +1,19 @@
+services:
+  baikal:
+    container_name: baikal
+    image: ckulka/baikal:nginx
+    ports:
+      - "8085:80"
+    labels:
+      tsdproxy.enable: true
+      tsdproxy.name: baikal
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/baikal/config:/var/www/baikal/config
+      - /DATA/AppData/baikal/data:/var/www/baikal/Specific
+    networks:
+      - baikal
+networks:
+  baikal:
+    name: baikal
+    driver: bridge
