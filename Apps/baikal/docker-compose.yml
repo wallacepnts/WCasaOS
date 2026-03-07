@@ -17,12 +17,7 @@ services:
 x-casaos:
   architectures:
     - amd64
-    - arm64
-    - arm32
-    - i386
   category: WCasaOS
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/baikal.png
-  index: /
-  port_map: "8085"
   title:
     custom: Baikal
