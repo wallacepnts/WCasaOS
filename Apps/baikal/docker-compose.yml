@@ -8,6 +8,7 @@ services:
     labels:
       tsdproxy.enable: true
       tsdproxy.name: baikal
+      tsdproxy.container_port: 80
     restart: unless-stopped
     volumes:
       - /DATA/AppData/baikal/config:/var/www/baikal/config
