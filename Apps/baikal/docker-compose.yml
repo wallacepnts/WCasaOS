@@ -2,17 +2,16 @@ name: baikal
 services:
   baikal:
     container_name: baikal
-    image: ckulka/baikal:nginx
+    image: docker.io/ckulka/baikal:nginx
     ports:
-      - "8085:80"
+      - "8089:80"
     labels:
       tsdproxy.enable: true
       tsdproxy.name: baikal
-      tsdproxy.container_port: 80
     restart: unless-stopped
     volumes:
       - /DATA/AppData/baikal/config:/var/www/baikal/config
-      - /DATA/AppData/baikal/data:/var/www/baikal/Specific
+      - /DATA/AppData/baikal/Specific:/var/www/baikal/Specific
 
 x-casaos:
   architectures:
