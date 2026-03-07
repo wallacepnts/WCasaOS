@@ -2,7 +2,7 @@ name: actual
 services:
   actual:
     container_name: actual
-    image: actualbudget/actual-server:26.2.1
+    image: actualbudget/actual-server:26.3.0
     ports:
       - "5006:5006"
     labels:
