@@ -13,12 +13,6 @@ services:
     volumes:
       - /DATA/AppData/baikal/config:/var/www/baikal/config
       - /DATA/AppData/baikal/data:/var/www/baikal/Specific
-    networks:
-      - baikal
-networks:
-  baikal:
-    name: baikal
-    driver: bridge
 
 x-casaos:
   architectures:
