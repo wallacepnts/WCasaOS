@@ -2,7 +2,7 @@ name: linkwarden
 services:
   linkwarden:
     container_name: linkwarden
-    image: ghcr.io/linkwarden/linkwarden:v2.13.5
+    image: ghcr.io/linkwarden/linkwarden:v2.14.1
     labels:
       tsdproxy.enable: "true"
       tsdproxy.name: linkwarden
